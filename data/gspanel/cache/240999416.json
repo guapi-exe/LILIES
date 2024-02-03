@@ -1,0 +1,387 @@
+{
+  "avatars": [
+    {
+      "id": 10000039,
+      "rarity": 4,
+      "name": "迪奥娜",
+      "slogan": "猫尾特调",
+      "element": "冰",
+      "cons": 2,
+      "fetter": 8,
+      "level": 80,
+      "icon": "UI_AvatarIcon_Diona",
+      "gachaAvatarImg": "UI_Gacha_AvatarImg_Diona",
+      "baseProp": {
+        "生命值": 8481.26171875,
+        "攻击力": 454.09051513671875,
+        "防御力": 532.293212890625
+      },
+      "fightProp": {
+        "生命值": 15252.765625,
+        "攻击力": 741.3538576126075,
+        "防御力": 713.9078979492188,
+        "暴击率": 5.000000074505806,
+        "暴击伤害": 61.820000410079956,
+        "治疗加成": 0,
+        "元素精通": 137.09400939941406,
+        "元素充能效率": 137.5999927520752,
+        "物理伤害加成": 0,
+        "火元素伤害加成": 0,
+        "水元素伤害加成": 0,
+        "风元素伤害加成": 0,
+        "雷元素伤害加成": 0,
+        "草元素伤害加成": 0,
+        "冰元素伤害加成": 18.000000715255737,
+        "岩元素伤害加成": 0
+      },
+      "skills": {
+        "a": {
+          "style": "",
+          "icon": "Skill_A_02",
+          "level": 6,
+          "originLvl": 6
+        },
+        "e": {
+          "style": "",
+          "icon": "Skill_S_Diona_01",
+          "level": 7,
+          "originLvl": 7
+        },
+        "q": {
+          "style": "",
+          "icon": "Skill_E_Diona_01",
+          "level": 7,
+          "originLvl": 7
+        }
+      },
+      "consts": [
+        {
+          "style": "",
+          "icon": "UI_Talent_S_Diona_01"
+        },
+        {
+          "style": "",
+          "icon": "UI_Talent_S_Diona_02"
+        },
+        {
+          "style": "off",
+          "icon": "UI_Talent_U_Diona_01"
+        },
+        {
+          "style": "off",
+          "icon": "UI_Talent_S_Diona_03"
+        },
+        {
+          "style": "off",
+          "icon": "UI_Talent_U_Diona_02"
+        },
+        {
+          "style": "off",
+          "icon": "UI_Talent_S_Diona_04"
+        }
+      ],
+      "weapon": {
+        "id": 15402,
+        "rarity": 4,
+        "name": "绝弦",
+        "affix": 1,
+        "level": 50,
+        "icon": "UI_EquipIcon_Bow_Troupe",
+        "main": 266,
+        "sub": {
+          "prop": "元素精通",
+          "value": "107"
+        }
+      },
+      "relics": [
+        {
+          "pos": 1,
+          "rarity": 4,
+          "name": "学士的书签",
+          "setName": "学士",
+          "level": 16,
+          "main": {
+            "prop": "生命值",
+            "value": "3571"
+          },
+          "sub": [
+            {
+              "prop": "攻击力",
+              "value": "25"
+            },
+            {
+              "prop": "元素精通",
+              "value": "13"
+            },
+            {
+              "prop": "生命值",
+              "value": "8.4%"
+            },
+            {
+              "prop": "充能效率",
+              "value": "4.1%"
+            }
+          ],
+          "calc": {
+            "rank": "B",
+            "total": 20.7,
+            "nohit": 0,
+            "main": 0.0,
+            "sub": [
+              {
+                "style": "use",
+                "goal": 3.7
+              },
+              {
+                "style": "unuse",
+                "goal": 0.0
+              },
+              {
+                "style": "great",
+                "goal": 11.2
+              },
+              {
+                "style": "great",
+                "goal": 4.4
+              }
+            ],
+            "main_pct": 100,
+            "total_pct": 107.6
+          },
+          "icon": "UI_RelicIcon_10012_4"
+        },
+        {
+          "pos": 2,
+          "rarity": 4,
+          "name": "学士的羽笔",
+          "setName": "学士",
+          "level": 16,
+          "main": {
+            "prop": "攻击力",
+            "value": "232"
+          },
+          "sub": [
+            {
+              "prop": "防御力",
+              "value": "16.9%"
+            },
+            {
+              "prop": "防御力",
+              "value": "19"
+            },
+            {
+              "prop": "元素精通",
+              "value": "17"
+            },
+            {
+              "prop": "攻击力",
+              "value": "3.3%"
+            }
+          ],
+          "calc": {
+            "rank": "D",
+            "total": 2.4,
+            "nohit": 3,
+            "main": 0.0,
+            "sub": [
+              {
+                "style": "unuse",
+                "goal": 0.0
+              },
+              {
+                "style": "unuse",
+                "goal": 0.0
+              },
+              {
+                "style": "unuse",
+                "goal": 0.0
+              },
+              {
+                "style": "use",
+                "goal": 2.2
+              }
+            ],
+            "main_pct": 100,
+            "total_pct": 107.6
+          },
+          "icon": "UI_RelicIcon_10012_2"
+        },
+        {
+          "pos": 3,
+          "rarity": 4,
+          "name": "勇士的坚毅",
+          "setName": "勇士之心",
+          "level": 4,
+          "main": {
+            "prop": "生命值",
+            "value": "13.4%"
+          },
+          "sub": [
+            {
+              "prop": "攻击力",
+              "value": "16"
+            },
+            {
+              "prop": "生命值",
+              "value": "215"
+            },
+            {
+              "prop": "充能效率",
+              "value": "4.1%"
+            }
+          ],
+          "calc": {
+            "rank": "D",
+            "total": 9.0,
+            "nohit": 0,
+            "main": 4.5,
+            "sub": [
+              {
+                "style": "use",
+                "goal": 2.3
+              },
+              {
+                "style": "great",
+                "goal": 3.4
+              },
+              {
+                "style": "great",
+                "goal": 4.4
+              }
+            ],
+            "main_pct": 64.4,
+            "total_pct": 95.5
+          },
+          "icon": "UI_RelicIcon_10002_5"
+        },
+        {
+          "pos": 4,
+          "rarity": 4,
+          "name": "学士的墨杯",
+          "setName": "学士",
+          "level": 4,
+          "main": {
+            "prop": "生命值",
+            "value": "13.4%"
+          },
+          "sub": [
+            {
+              "prop": "暴击伤害",
+              "value": "6.2%"
+            },
+            {
+              "prop": "充能效率",
+              "value": "5.2%"
+            },
+            {
+              "prop": "防御力",
+              "value": "5.8%"
+            }
+          ],
+          "calc": {
+            "rank": "D",
+            "total": 7.3,
+            "nohit": 1,
+            "main": 4.5,
+            "sub": [
+              {
+                "style": "use",
+                "goal": 3.1
+              },
+              {
+                "style": "great",
+                "goal": 5.6
+              },
+              {
+                "style": "unuse",
+                "goal": 0.0
+              }
+            ],
+            "main_pct": 64.4,
+            "total_pct": 85.8
+          },
+          "icon": "UI_RelicIcon_10012_1"
+        },
+        {
+          "pos": 5,
+          "rarity": 4,
+          "name": "学士的镜片",
+          "setName": "学士",
+          "level": 0,
+          "main": {
+            "prop": "防御力",
+            "value": "7.9%"
+          },
+          "sub": [
+            {
+              "prop": "充能效率",
+              "value": "4.1%"
+            },
+            {
+              "prop": "暴击伤害",
+              "value": "5.6%"
+            }
+          ],
+          "calc": {
+            "rank": "D",
+            "total": 3.1,
+            "nohit": 0,
+            "main": 0.0,
+            "sub": [
+              {
+                "style": "great",
+                "goal": 4.4
+              },
+              {
+                "style": "use",
+                "goal": 2.8
+              }
+            ],
+            "main_pct": 50.0,
+            "total_pct": 85.8
+          },
+          "icon": "UI_RelicIcon_10012_3"
+        }
+      ],
+      "relicSet": {
+        "学士": 4,
+        "勇士之心": 1
+      },
+      "relicCalc": {
+        "rank": "D",
+        "total": 42.5
+      },
+      "damage": {
+        "level": "C",
+        "data": [
+          [
+            "长按E护盾量",
+            "-",
+            "5720"
+          ],
+          [
+            "Q每跳治疗量",
+            "-",
+            "2105"
+          ]
+        ],
+        "buff": [
+          [
+            "绝弦被动",
+            "元素战技造成伤害提高24%"
+          ],
+          [
+            "绝弦被动",
+            "元素爆发造成伤害提高24%"
+          ],
+          [
+            "迪奥娜2命",
+            "护盾吸收量提高15%"
+          ]
+        ]
+      },
+      "time": 1706843291
+    }
+  ],
+  "next": 1706843350
+}

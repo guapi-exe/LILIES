@@ -1,0 +1,107 @@
+
+body {
+//background-color: rgba(173, 33, 33, 0);
+//background-image: url("./css/preview.jpg")
+}
+
+#games ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#games li {
+    position: relative;
+    margin: 10px;
+    background-color: azure;
+    box-shadow: 1px 1px 10px gray;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: flex-start; /* 将内部元素沿着交叉轴（垂直轴）靠上对齐 */
+    justify-content: flex-start; /* 将内部元素沿着主轴（水平轴）靠左对齐 */
+}
+
+#games li img {
+    margin-right: 10px;
+    width: 64px;
+    height: 64px;
+}
+
+
+#games li > span {
+    font-family: "Minecraft PL Font Regular", sans-serif;
+    display: block;
+    text-align: left;
+    margin-left: 10px;
+}
+.sprite {
+    display: inline-block;
+    vertical-align: text-top;
+    height: 16px;
+    width: 16px;
+    background-repeat: no-repeat;
+}
+.box {
+    margin: auto;
+    overflow: auto;
+}
+
+.divbox {
+    margin: 10px;
+    background-color: azure;
+    padding: 10px;
+}
+.container {
+    position: relative;
+    top: 0;
+    margin: auto;
+    display: flex;
+}
+.container canvas {
+    box-shadow: 1px 1px 10px gray;
+    border-radius: 10px; /* 设置圆角 */
+    margin-right: 10px;
+}
+.divtext {
+    font-family: "Minecraft PL Font Regular", sans-serif;
+    box-shadow: 1px 1px 10px gray;
+    border-radius: 10px; /* 设置圆角 */
+//border: 1px solid rgba(204, 12, 98, 0.81);
+    overflow: auto;
+    width: auto;
+    height: auto;
+    margin-right: 6px;
+}
+.spancolor {
+    font-family: "Minecraft PL Font Regular", sans-serif;
+    display: block;
+    font-size: 20px;
+    margin: 6px;
+}
+.divtext > span {
+    font-family: "Minecraft PL Font Regular", sans-serif;
+    display: block;
+    font-size: 20px;
+    margin: 6px;
+}
+
+.circle {
+    fill: none;
+    stroke-width: 20;
+
+}
+.progress {
+    stroke: rgb(0, 149, 255);
+    stroke-dasharray: 0 1000;
+    transition: stroke-dasharray 1s;
+}
+.background {
+    stroke: lightgray;
+}
+.circle-text {
+    font-family: Arial,serif;
+    font-size: 40px;
+    text-anchor: middle;
+    dominant-baseline: middle;
+}

@@ -1,0 +1,28 @@
+import requests
+from bs4 import BeautifulSoup
+import urllib.parse
+
+
+def search_url(name: str):
+    url_encoded = urllib.parse.quote(name)
+    page = requests.get(f"https://search.mcmod.cn/s?key={url_encoded}")
+    soup = BeautifulSoup(page.text, "html.parser")
+    result_list = soup.select_one(".search-result-list")
+    if result_list is None:
+        return None
+    result_head = result_list.select_one(".head")
+    result_url = result_head.find_all("a", target="_blank")
+    if result_url is None:
+        return None
+    for i in result_url:
+        url_a = BeautifulSoup(str(i), "html.parser")
+        if url_a.find(class_=True) is not None:
+            result_url.remove(i)
+    if result_url is not None and len(result_url) > 0:
+        result = BeautifulSoup(str(result_url[0]), "html.parser").a.get("href")
+        return result
+    else:
+        return None
+
+
+print(search_url("沉浸工程燃油发动机"))

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Server</title>
+    <script src="../static/js/chart.js"></script>
+    <script src="../static/js/jquery-3.3.1.js"></script>
+    <link rel="stylesheet" href="../static/css/index.css">
+    <style>
+        body {
+        //background-color: #f0fdff;
+            //background-image: url("../static/img/preview.jpg");
+            background-color: rgb(240, 253, 255);
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+
+    <div class="divbox">
+        <div class="container">
+            <img class="circularimg" src="https://bot-resource-1251316161.file.myqcloud.com/avatar/b1c84c84-2f88-496a-bd54-2c781b6c0c9f3666422688431467466?ts=1699511422" style="width: 120px;height: 120px">
+            <div class="divtext">
+                <span>机器人:LiliES</span>
+                <span>Appid:102071975</span>
+                <span>在线状态:正常</span>
+            </div>
+            <div class="divtext">
+                <span>简介:mindustry，MC，github</span>
+            </div>
+            <div class="divtext" style="transform: translateX(140%)">
+                <span id="disk_total"></span>
+                <span id="disk_free"></span>
+                <span id="disk_percent"></span>
+            </div>
+            <canvas id="diskChart" style="display: block; box-sizing: border-box; height: 50px; width: 400px;" class="yalign"></canvas>
+        </div>
+    </div>
+    <div class="divbox">
+        <div class="container">
+            <svg width="160" height="160" viewBox="0 0 200 200">
+                <defs>
+                    <path id="circle-path" d="M 100, 100 m -75, 0 a 75,75 0 1,0 150,0 a 75,75 0 1,0 -150,0"/>
+                </defs>
+                <circle class="circle background" cx="100" cy="100" r="75"/>
+                <circle class="circle progress" cx="100" cy="100" r="75" id="cpucircle"/>
+                <text class="text" x="100" y="100" id="cputext">0%</text>
+            </svg>
+            <div class="divtext">
+                <span id="cpu_percent"></span>
+                <span id="cpu_count"></span>
+                <span id="cpu_current"></span>
+            </div>
+            <canvas id="cpuChart" style="display: block; box-sizing: border-box; height: 50px; width: 400px;" class="yalign">
+            </canvas>
+        </div>
+    </div>
+    <div class="divbox">
+        <div class="container">
+            <svg width="160" height="160" viewBox="0 0 200 200">
+                <defs>
+                    <path id="circle-path" d="M 100, 100 m -75, 0 a 75,75 0 1,0 150,0 a 75,75 0 1,0 -150,0"/>
+                </defs>
+                <circle class="circle background" cx="100" cy="100" r="75"/>
+                <circle class="circle progress" cx="100" cy="100" r="75" id="memcircle"/>
+                <text class="text" x="100" y="100" id="memtext">0%</text>
+
+            </svg>
+            <div class="divtext">
+                <span id="mem_percent"></span>
+                <span id="mem_total"></span>
+                <span id="mem_available"></span>
+            </div>
+            <canvas id="memChart" style="display: block; box-sizing: border-box; height: 50px; width: 400px;" class="yalign">
+            </canvas>
+        </div>
+    </div>
+    <div class="divbox">
+        <div class="container">
+            <canvas id="netChart" style="display: block; box-sizing: border-box; height: 50px; width: 400px;">
+            </canvas>
+        </div>
+    </div>
+    <div class="divbox">
+        <div class="divtext" style="transform: translateX(300%);height: 30px">
+            <span>Plugin By guapi</span>
+        </div>
+
+    </div>
+</div>
+
+<script src="../static/js/index.js"></script>
+</body>
+</html>

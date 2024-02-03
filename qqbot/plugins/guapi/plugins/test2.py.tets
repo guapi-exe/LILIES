@@ -1,0 +1,16 @@
+import asyncio
+from pathlib import Path
+from nonebot import on_command, logger
+import json
+import requests
+
+
+def get_hitokoto():
+    url = "https://v1.hitokoto.cn/"
+    request = requests.get(url)
+    content = request.json()
+    if "hitokoto" in content:
+        hitokoto = content["hitokoto"]
+    else:
+        hitokoto = None
+    return hitokoto

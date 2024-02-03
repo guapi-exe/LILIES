@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <script src="../static/js/skinview3d.bundle.js"></script>
+    <script src="../static/js/jquery-3.3.1.js"></script>
+    <script src="../static/js/hypinfo.js"></script>
+    <link rel="stylesheet" href="../static/css/hypinfo.css">
+	<title>hypinfo</title>
+    <style>
+        @font-face {
+            font-family: 'Minecraft PL Font Regular';
+            src: url('../static/font/Minecraft-1.ttf');
+        }
+    </style>
+</head>
+<body>
+
+	<div class="box">
+		<div class="divbox">
+			<div class="container">
+				<canvas id="skin_container"></canvas>
+				<canvas id="skin_container_turn"></canvas>
+				<div class="divtext" id="level_info">
+					<svg width="110" height="110" viewBox="0 0 200 200">
+						<defs>
+							<path id="circle-path" d="M 100, 100 m -75, 0 a 75,75 0 1,0 150,0 a 75,75 0 1,0 -150,0"></path>
+						</defs>
+						<circle class="circle background" cx="100" cy="100" r="75"></circle>
+						<circle class="circle progress" cx="100" cy="100" r="75" id="levelcircle"></circle>
+						<text class="circle-text" x="100" y="100" id="leveltext">0</text>
+
+					</svg>
+                    <div class="spancolor">
+                        <span>当前等级:</span><span style="color: green" id="hall_level">0</span>
+                    </div>
+                    <div class="spancolor">
+                        <span>升级还需:</span><span style="color: green" id="hall_next_exp_need">0</span>
+                    </div>
+				</div>
+				<div class="divtext" id="player_info">
+					<div class="spancolor">
+						<span>任务数:</span><span style="color: green" id="hall_quest">0</span>
+					</div>
+					<div class="spancolor">
+						<span>挑战数:</span><span style="color: green" id="hall_challenge">0</span>
+					</div>
+                    <div class="spancolor">
+                        <span>总计经验:</span><span style="color: green" id="hall_exp">0</span>
+                    </div>
+                    <div class="spancolor">
+                        <span>成就点数:</span><span style="color: green" id="hall_points">0</span>
+                    </div>
+                    <div class="spancolor">
+                        <span>总成就数:</span><span style="color: green" id="hall_achieves">0</span>
+                    </div>
+
+				</div>
+				<div class="divtext" id="recent_games">
+					<span id = "online"></span>
+                    <div class="spancolor">
+                        <span>首次登录时间:</span><span style="color: green" id="first_login"></span>
+                    </div>
+                    <div class="spancolor">
+                        <span>最近登录时间:</span><span style="color: green" id="last_login"></span>
+                    </div>
+
+				</div>
+				<div class="divtext" id="id_info">
+					<div>
+						<span>麻将uuid:</span><span style="color: red" id="mc_uuid"></span>
+					</div>
+					<div>
+						<span>hyp-id:</span><span style="color: red" id="hyp_id"></span>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+	<div id="games" data-xf-init="games">
+		<ul>
+			<li data-game="bedwars" class="active tooltipstered" >
+				<img src="../static/img/BedWars-64.png" loading="lazy">
+				<span>Bed Wars<br>起床战争</span>
+			</li>
+
+			<li data-game="skywars"  class="tooltipstered">
+				<img src="../static/img/Skywars-64.png" loading="lazy">
+				<span>SkyWars<br>空岛战争</span>
+			</li>
+
+			<li data-game="murder-mystery" class="tooltipstered">
+
+				<img src="../static/img/MurderMystery-64.png" loading="lazy">
+				<span>Murder Mystery<br>狼人杀</span>
+			</li>
+
+			<li data-game="arcade-games" class="tooltipstered">
+
+				<img src="../static/img/Arcade-64.png" loading="lazy">
+				<span>Arcade Games<br>街机游戏<br>仅展示热门游戏</span>
+			</li>
+
+			<li data-game="uhc-champions"  class="tooltipstered">
+
+				<img src="../static/img/UHC-64.png" loading="lazy">
+				<span>UHC Champions<br>UHC极限生存</span>
+			</li>
+
+			<li data-game="arena-brawl" class="tooltipstered">
+
+				<img src="../static/img/Arena-64.png" loading="lazy">
+				<span>Arena Brawl<br>竞技场</span>
+			</li>
+
+			<li data-game="build-battle"  class="tooltipstered">
+
+				<img src="../static/img/BuildBattle-64.png" loading="lazy">
+				<span>Build Battle<br>你建我猜</span>
+			</li>
+
+			<li data-game="cops-and-crims"  class="tooltipstered">
+
+				<img src="../static/img/CVC-64.png" loading="lazy">
+				<span>Cops and Crims<br>MS:GO</span>
+			</li>
+
+			<li data-game="duels"  class="tooltipstered">
+
+				<img src="../static/img/Duels-64.png" loading="lazy">
+				<span>Duels<br>决斗游戏</span>
+			</li>
+
+			<li data-game="megawalls" class="tooltipstered">
+
+				<img src="../static/img/MegaWalls-64.png" loading="lazy">
+				<span>Mega Walls<br>超级战墙</span>
+			</li>
+
+			<li data-game="tnt-games"  class="tooltipstered">
+
+				<img src="../static/img/TNT-64.png" loading="lazy">
+				<span>The TNT Games<br>TNT游戏</span>
+			</li>
+
+		</ul>
+	</div>
+
+</body>
+</html>

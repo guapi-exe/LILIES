@@ -1,0 +1,100 @@
+body {
+    background-image: url("https://npm.elemecdn.com/ushio-api-img-moe@5.0.88/img_880_2039x1231_299.719970703125_null_normal.jpg");
+    background-size: cover;
+}
+.box {
+    display: flex;
+    margin: auto;
+    overflow: auto;
+}
+.divbox {
+    width: 1200px;
+    margin: 6px;
+    background-color: rgba(0, 208, 255, 0.1);
+    padding: 1px;
+    border-radius: 3px; /* 设置圆角 */
+}
+.container {
+    margin: auto;
+    overflow: auto;
+}
+.column {
+    margin: 4px;
+    background-color: azure;
+    box-shadow: 5px 5px 10px gray;
+    padding: 4px;
+    border-radius: 6px; /* 设置圆角 */
+}
+.divtext {
+    display: flex;
+    padding: 1px;
+}
+.icon {
+    width: 180px;
+    height: 180px;
+    align-self: center;
+}
+.data {
+    margin: 0 auto auto 0;
+    text-align: left;
+    width: inherit;
+    overflow: hidden;
+
+}
+.server{
+    display: flex;
+    align-items: flex-end; /* 添加这一行 */
+    font-size: 30px;
+}
+.motd {
+}
+.data > span {
+    display: flex;
+    font-size: 30px;
+    text-align: left;
+    overflow: hidden;
+}
+.motd span {
+    font-size: 30px;
+}
+
+.signal {
+    display: flex;
+    align-items: flex-end; /* 添加这一行 */
+    height: 30px;
+//border: 1px solid black;
+}
+.signal span {
+    display: flex;
+    font-size: 28px;
+    text-align: left;
+}
+
+.block {
+    width: 3px;
+    height: 16px;
+    margin-right: 1px;
+    box-shadow: 1px 1px 1px gray;
+    border-radius: 1px;
+    font-size: 28px;
+}
+.green {
+    background-color: green;
+    height: 18px;
+}
+.lime {
+    background-color: green;
+    height: 13px;
+}
+.yellow {
+    background-color: green;
+    height: 10px;
+}
+.orange {
+    background-color: green;
+    height: 7px;
+}
+.red {
+    background-color: green;
+    height: 4px;
+}

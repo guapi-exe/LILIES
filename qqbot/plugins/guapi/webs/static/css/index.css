@@ -1,0 +1,66 @@
+body {
+//background-color: #f0fdff;
+    //background-image: url("./css/preview.jpg")
+}
+.box {
+    margin: auto;
+    overflow: auto;
+}
+.divbox {
+    margin: 20px;
+    background-color: azure;
+    box-shadow: 5px 5px 10px gray;
+    padding: 10px;
+    border-radius: 10px; /* 设置圆角 */
+}
+.container {
+    position: relative;
+    margin: auto;
+    display: flex;
+}
+.divtext {
+    width: 200px;
+    height: 100px;
+    padding: 10px;
+}
+.divdisktext {
+    width: 200px;
+    height: 100px;
+    padding: 10px;
+}
+.divdisktext span {
+    display: block;
+    font-size: 20px;
+    margin: 10px;
+}
+.divtext span {
+    display: block;
+    font-size: 20px;
+    margin: 10px;
+}
+.yalign {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.circle {
+    fill: none;
+    stroke-width: 20;
+}
+.progress {
+    stroke: rgb(0, 149, 255);
+    stroke-dasharray: 0 1000;
+    transition: stroke-dasharray 1s;
+}
+.background {
+    stroke: lightgray;
+}
+.text {
+    font-family: Arial;
+    font-size: 40px;
+    text-anchor: middle;
+    dominant-baseline: middle;
+}
+.circularimg {
+    border-radius: 50%;
+}

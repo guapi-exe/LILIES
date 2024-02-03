@@ -1,0 +1,106 @@
+body {
+    background-color: #a0cfff;
+//background-image: url("./css/preview.jpg")
+}
+.box {
+    margin: auto;
+    overflow: auto;
+
+}
+.divbox {
+    width: 1220px;
+    margin: 8px;
+    background-color: azure;
+    box-shadow: 5px 5px 10px gray;
+    padding: 4px;
+    border-radius: 10px; /* 设置圆角 */
+}
+.container {
+    display: flex;
+    align-items: flex-start;
+}
+.container img {
+    width: 180px;
+    height: 180px;
+    align-self: center;
+    border-radius: 10px
+}
+.divtitle {
+    padding: 6px;
+    position: revert;
+    margin-top: 0;
+}
+.divtext {
+    padding: 6px;
+}
+.divtext > span {
+    display: block;
+    font-size: 30px;
+}
+.divtitle > span {
+    display: block;
+    font-size: 36px;
+}
+.motd {
+    margin: 0 auto;
+}
+.motd > span {
+    font-size: 30px;
+}
+ul {
+    list-style: none;
+    padding: 0;
+}
+li {
+    display: flex;
+    align-items: flex-start;
+}
+li > img {
+    width: 80px;
+    height: 80px;
+    align-self: center;
+}
+li > span{
+    font-size: 30px;
+}
+.signal {
+    display: flex;
+    align-items: flex-end;
+    height: 30px;
+//border: 1px solid black;
+    margin-left: auto;
+}
+.signal span {
+    display: flex;
+    font-size: 30px;
+    text-align: left;
+}
+
+.block {
+    width: 3px;
+    height: 16px;
+    margin-right: 1px;
+    box-shadow: 1px 1px 1px gray;
+    border-radius: 1px;
+    font-size: 30px;
+}
+.green {
+    background-color: green;
+    height: 20px;
+}
+.lime {
+    background-color: green;
+    height: 15px;
+}
+.yellow {
+    background-color: green;
+    height: 12px;
+}
+.orange {
+    background-color: green;
+    height: 9px;
+}
+.red {
+    background-color: green;
+    height: 6px;
+}
