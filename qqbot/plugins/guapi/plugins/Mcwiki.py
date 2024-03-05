@@ -14,9 +14,11 @@ from nonebot.adapters.qq.models import MessageArk, MessageArkKv, MessageKeyboard
 from nonebot.adapters.qq import MessageSegment, Event, Message, MessageEvent
 
 config_ip = get_driver().config.dict()["guapi"]["ip"]
+config_port = get_driver().config.dict()["guapi"]["port"]
 
 mc_wiki = on_command("MC", rule=to_me(), aliases={"我的世界", "McWiki"}, priority=10)
 imgfile_path = str(Path(__file__).parent.parent.joinpath("webs").joinpath("webfiles"))
+
 
 @mc_wiki.handle()
 async def handle_function(args: Message = CommandArg(), event: Event = MessageEvent()):
@@ -42,13 +44,13 @@ async def handle_function(args: Message = CommandArg(), event: Event = MessageEv
                 params=[
                     MessageMarkdownParams(key="text_start", values=[f"{name}|搜索结果"]),
                     MessageMarkdownParams(key="img_dec", values=[f"img #{image[2]}px #{image[3]}px"]),
-                    MessageMarkdownParams(key="img_url", values=[f"http://{config_ip}:8099/api/files/{image_id}"])
+                    MessageMarkdownParams(key="img_url", values=[f"http://{config_ip}:{config_port}/api/files/{image_id}"])
                 ]
             )
             if group_id is not None:
                 await mc_wiki.finish(MessageSegment.markdown(mdmsg))
             else:
-                await mc_wiki.finish(MessageSegment.image(f"http://{config_ip}:8099/api/files/{image_id}"))
+                await mc_wiki.finish(MessageSegment.image(f"http://{config_ip}:{config_port}/api/files/{image_id}"))
     else:
         await mc_wiki.finish("请输入搜索项")
 

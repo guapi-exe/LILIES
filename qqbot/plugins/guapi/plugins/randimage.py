@@ -9,6 +9,7 @@ from nonebot.adapters.qq import MessageSegment, Event, Message, MessageEvent
 from nonebot.adapters.qq.models import MessageArk, MessageArkKv, MessageKeyboard, MessageMarkdown, MessageMarkdownParams
 
 config_ip = get_driver().config.dict()["guapi"]["ip"]
+config_port = get_driver().config.dict()["guapi"]["port"]
 
 rand_image = on_command("随机图片", rule=to_me(), aliases={"随机二次元"}, priority=10)
 imgfile_path = str(Path(__file__).parent.parent.joinpath("webs").joinpath("webfiles"))
@@ -33,13 +34,13 @@ async def handle_function(event: Event = MessageEvent()):
             params=[
                 MessageMarkdownParams(key="text_start", values=[f"随机图片"]),
                 MessageMarkdownParams(key="img_dec", values=[f"img #{result[2]}px #{result[3]}px"]),
-                MessageMarkdownParams(key="img_url", values=[f"http://{config_ip}:8099/api/files/{image_id}"]),
+                MessageMarkdownParams(key="img_url", values=[f"http://{config_ip}:{config_port}/api/files/{image_id}"]),
             ]
         )
         if group_id is not None:
             await rand_image.finish(MessageSegment.markdown(mdmsg))
         else:
-            await rand_image.finish(MessageSegment.image(f"http://{config_ip}:8099/api/files/{image_id}"))
+            await rand_image.finish(MessageSegment.image(f"http://{config_ip}:{config_port}/api/files/{image_id}"))
     else:
         await rand_image.finish("图片下载错误")
 

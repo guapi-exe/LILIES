@@ -7,7 +7,7 @@ let diskChart
 async function load_server_state() {
     return await $.ajax({
         type: "get",
-        url: "http://101.34.203.130:8099/api/dinfo",
+        url: "http://127.0.0.1:8099/api/dinfo",
         async: true,
         success: function (data) {
             console.log(JSON.parse(data))

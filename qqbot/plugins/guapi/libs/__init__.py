@@ -1,5 +1,5 @@
 import datetime
-from typing import Optional
+from typing import Optional, List
 from pydantic import BaseModel
 
 
@@ -29,6 +29,7 @@ class server_list(BaseModel):
 
 class DeviceInformation(BaseModel):
     cpumodel: Optional[str]
+    cpu_core_percent: Optional[list]
     cpu_percent: Optional[float]
     cpu_percent_list: Optional[list]
     cpu_count: Optional[int]
@@ -45,3 +46,13 @@ class DeviceInformation(BaseModel):
     net_recv: Optional[float]
     net_recv_list: Optional[list]
     time_list: Optional[list]
+    top_list: Optional[list]
+
+
+class day_used(BaseModel):
+    today: Optional[datetime.date]
+    times: Optional[List[datetime.date]]
+    dau: Optional[int]
+    month_dau: Optional[List[int]]
+    day_messages: Optional[int]
+    month_messages: Optional[List[int]]

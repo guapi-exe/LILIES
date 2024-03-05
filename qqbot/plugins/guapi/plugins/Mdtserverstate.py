@@ -9,6 +9,7 @@ from nonebot.adapters.qq.models import MessageArk, MessageArkKv, MessageKeyboard
 from nonebot.adapters.qq import MessageSegment, Event, Message, MessageEvent, permission
 from ..utils.redisdata import redis_storage_cover, get_redis_data
 config_ip = get_driver().config.dict()["guapi"]["ip"]
+config_port = get_driver().config.dict()["guapi"]["port"]
 
 imgfile_path = str(Path(__file__).parent.parent.joinpath("webs").joinpath("webfiles"))
 
@@ -60,7 +61,7 @@ async def handle_function(args: Message = CommandArg(), event: Event = MessageEv
             params=[
                 MessageMarkdownParams(key="text_start", values=[f"服务器状态信息"]),
                 MessageMarkdownParams(key="img_dec", values=[f"img #{image[2]}px #{image[3]}px"]),
-                MessageMarkdownParams(key="img_url", values=[f"http://{config_ip}:8099/api/files/{image_id}"]),
+                MessageMarkdownParams(key="img_url", values=[f"http://{config_ip}:{config_port}/api/files/{image_id}"]),
             ]
         )
         kbmsg = MessageKeyboard(
@@ -96,4 +97,4 @@ async def handle_function(args: Message = CommandArg(), event: Event = MessageEv
         if group_id is not None:
             await look_server_state.finish(Message([MessageSegment.markdown(mdmsg), MessageSegment.keyboard(kbmsg)]))
         else:
-            await look_server_state.finish(MessageSegment.image(f"http://{config_ip}:8099/api/files/{image_id}"))
+            await look_server_state.finish(MessageSegment.image(f"http://{config_ip}:{config_port}/api/files/{image_id}"))

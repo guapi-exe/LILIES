@@ -1,5 +1,4 @@
 import io
-
 import requests
 from nonebot import get_driver
 from nonebot.log import logger
@@ -17,6 +16,7 @@ from .data_updater import updateCache
 from .data_source import getTeam, getPanel
 from .__utils__ import GSPANEL_ALIAS, uidHelper, formatTeam, formatInput, fetchInitRes
 config_ip = get_driver().config.dict()["guapi"]["ip"]
+config_port = get_driver().config.dict()["guapi"]["port"]
 driver = get_driver()
 driver.on_startup(fetchInitRes)
 driver.on_bot_connect(updateCache)
@@ -141,7 +141,7 @@ async def panel_handle(bot: Bot, event: MessageEvent, arg: Message = CommandArg(
             params=[
                 MessageMarkdownParams(key="text_start", values=[f"{char}的角色面板"]),
                 MessageMarkdownParams(key="img_dec", values=[f"img #{width}px #{height}px"]),
-                MessageMarkdownParams(key="img_url", values=[f"http://{config_ip}/api/files/{image_id}"]),
+                MessageMarkdownParams(key="img_url", values=[f"http://{config_ip}:{config_port}/api/files/{image_id}"]),
             ]
         )
         await showPanel.finish(Message([MessageSegment.markdown(mdmsg), MessageSegment.keyboard(kbmsg)]))
@@ -185,8 +185,8 @@ async def team_handle(bot: Bot, event: MessageEvent, arg: Message = CommandArg()
                             {
                                 "id": "16",
                                 "render_data": {
-                                    "label": "队伍伤害详细",
-                                    "visited_label": "队伍伤害详细"
+                                    "label": "队伍伤害全部",
+                                    "visited_label": "队伍伤害全部"
                                 },
                                 "action": {
                                     "type": 2,
@@ -199,7 +199,7 @@ async def team_handle(bot: Bot, event: MessageEvent, arg: Message = CommandArg()
                                         ]
                                     },
                                     "unsupport_tips": "兼容文本",
-                                    "data": "/队伍伤害 详细"
+                                    "data": "/队伍伤害 全部"
                                 }
                             }
                         ]
@@ -212,7 +212,7 @@ async def team_handle(bot: Bot, event: MessageEvent, arg: Message = CommandArg()
             params=[
                 MessageMarkdownParams(key="text_start", values=[f"{uid}的队伍伤害面板"]),
                 MessageMarkdownParams(key="img_dec", values=[f"img #{width}px #{height}px"]),
-                MessageMarkdownParams(key="img_url", values=[f"http://{config_ip}/api/files/{image_id}"]),
+                MessageMarkdownParams(key="img_url", values=[f"http://{config_ip}:{config_port}/api/files/{image_id}"]),
             ]
         )
         await showTeam.finish(Message([MessageSegment.markdown(mdmsg), MessageSegment.keyboard(kbmsg)]))

@@ -1,7 +1,7 @@
 async function load_server_state(ip) {
     return $.ajax({
         type: "get",
-        url: `http://101.34.203.130:8099/api/mcserver_state_original/${ip}`,
+        url: `http://127.0.0.1:8099/api/mcserver_state_original/${ip}`,
         async: true,
         success: function (data) {
             console.log(JSON.parse(data))
@@ -176,7 +176,7 @@ function load_all(ip){
                 for(let player in server["players"]["sample"]){
                     let player_li = $(`
                             <li>
-                                <img src="http://101.34.203.130:8099/api/skinhead/${server["players"]["sample"][player]["name"]}?size=1024" alt="">
+                                <img src="http://127.0.0.1:8099/api/skinhead/${server["players"]["sample"][player]["name"]}?size=1024" alt="">
                                 <div class="divtext">
                                     <span>name:${server["players"]["sample"][player]["name"]}</span>
                                     <span>uuid:${server["players"]["sample"][player]["id"]}</span>

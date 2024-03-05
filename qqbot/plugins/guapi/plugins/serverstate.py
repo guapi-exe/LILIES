@@ -11,6 +11,7 @@ from pydantic import BaseModel
 
 from .Mcserverstate import get_mcserver_state_from_redis
 from ..libs import DeviceInformation
+from ..utils.toplist import get_top_list
 
 server_state: Optional[DeviceInformation] = None
 loop: Optional[AbstractEventLoop] = None
@@ -29,6 +30,9 @@ async def getnet():
 
 async def DInfo():
     cpu_percent = psutil.cpu_percent()
+    pids = psutil.pids()
+    top_list = await get_top_list(pids)
+    cpu_core_percent = psutil.cpu_percent(percpu=True)
     cpu_count = psutil.cpu_count()
     cpu_freq = psutil.cpu_freq()
     mem_info = psutil.virtual_memory()
@@ -39,6 +43,7 @@ async def DInfo():
 
     device_info = DeviceInformation(
         cpumodel=platform.processor(),
+        cpu_core_percent=cpu_core_percent,
         cpu_percent=cpu_percent,
         cpu_count=cpu_count,
         cpu_current=cpu_freq.current / 1000,
@@ -49,9 +54,10 @@ async def DInfo():
         disk_free=disk_info.free / 1024 ** 3,
         disk_percent=disk_info.percent,
         net_send=net_send,
-        net_recv=net_recv
+        net_recv=net_recv,
+        top_list=top_list
     )
-    logger.info("dinfo:" + str(device_info))
+    # logger.info("dinfo:" + str(device_info))
     return device_info
 
 
@@ -65,6 +71,7 @@ async def Update_DInfo_list(dinfolist: DeviceInformation):
         dinfolist = DeviceInformation(
             cpumodel=dinfo.cpumodel,
             cpu_percent=cpu_percent,
+            cpu_core_percent=dinfo.cpu_core_percent,
             cpu_percent_list=[],
             cpu_count=dinfo.cpu_count,
             cpu_current=dinfo.cpu_current,
@@ -79,16 +86,18 @@ async def Update_DInfo_list(dinfolist: DeviceInformation):
             net_recv=net_recv,
             net_send_list=[],
             net_recv_list=[],
-            time_list=[]
+            time_list=[],
+            top_list=dinfo.top_list
         )
     else:
-        if len(dinfolist.cpu_percent_list) >= 60:
+        if len(dinfolist.cpu_percent_list) >= 120:
             del dinfolist.cpu_percent_list[0]
             del dinfolist.mem_percent_list[0]
             del dinfolist.net_send_list[0]
             del dinfolist.net_recv_list[0]
             del dinfolist.time_list[0]
         dinfolist.cpumodel = dinfo.cpumodel
+        dinfolist.cpu_core_percent = dinfo.cpu_core_percent
         dinfolist.cpu_percent = dinfo.cpu_percent
         dinfolist.cpu_count = dinfo.cpu_count
         dinfolist.mem_total = dinfo.mem_total
@@ -99,11 +108,12 @@ async def Update_DInfo_list(dinfolist: DeviceInformation):
         dinfolist.disk_free = dinfo.disk_free
         dinfolist.net_recv = dinfo.net_recv
         dinfolist.net_send = dinfo.net_send
+        dinfolist.top_list = dinfo.top_list
     dinfolist.cpu_percent_list.append(cpu_percent)
     dinfolist.mem_percent_list.append(mem_percent)
     dinfolist.net_send_list.append(net_send)
     dinfolist.net_recv_list.append(net_recv)
-    dinfolist.time_list.append(time.strftime('%m-%d %H:%M:%S'))
+    dinfolist.time_list.append(time.strftime('%H:%M'))
     # logger.info(dinfolist)
     return dinfolist
 

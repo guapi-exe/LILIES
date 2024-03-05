@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "guapi"
+version = "0.1.0"
+description = "LILIES"
+authors = ["guapi-exe <3051016381@qq.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+
+
+[build-system]
+requires = [
+    "poetry-core",
+    "flask[async]",
+    "pytz",
+    "redis",
+    "sqlite3",
+    "mcstatus",
+    "cv2",
+    "bs4"
+]
+build-backend = "poetry.core.masonry.api"
+
+[[tool.poetry.source]]
+name = "aliyun"
+url = "https://mirrors.aliyun.com/pypi/simple"

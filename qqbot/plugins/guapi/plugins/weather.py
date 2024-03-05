@@ -7,6 +7,7 @@ from nonebot.adapters.qq.models import MessageArk, MessageArkKv, MessageKeyboard
 import urllib.parse
 from ..utils.ppeteer import screenshot
 config_ip = get_driver().config.dict()["guapi"]["ip"]
+config_port = get_driver().config.dict()["guapi"]["port"]
 
 weather = on_command("天气", aliases={"weather", "查天气"}, priority=10)
 imgfile_path = str(Path(__file__).parent.parent.joinpath("webs").joinpath("webfiles"))
@@ -33,12 +34,12 @@ async def handle_function(args: Message = CommandArg(), event: Event = MessageEv
             params=[
                 MessageMarkdownParams(key="text_start", values=[f"{location}天气"]),
                 MessageMarkdownParams(key="img_dec", values=[f"img #{image[2]}px #{image[3]}px"]),
-                MessageMarkdownParams(key="img_url", values=[f"http://{config_ip}:8099/api/files/{image_id}"])
+                MessageMarkdownParams(key="img_url", values=[f"http://{config_ip}:{config_port}/api/files/{image_id}"])
             ]
         )
         if group_id is not None:
             await weather.finish(MessageSegment.markdown(mdmsg))
         else:
-            await weather.finish(MessageSegment.image(f"http://{config_ip}:8099/api/files/{image_id}"))
+            await weather.finish(MessageSegment.image(f"http://{config_ip}:{config_port}/api/files/{image_id}"))
     else:
         await weather.finish("请输入地名")

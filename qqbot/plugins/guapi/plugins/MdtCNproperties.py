@@ -11,6 +11,7 @@ from nonebot.adapters.qq import MessageSegment, Event, Message, MessageEvent
 from nonebot.adapters.qq.models import MessageArk, MessageArkKv, MessageKeyboard, MessageMarkdown, MessageMarkdownParams
 
 config_ip = get_driver().config.dict()["guapi"]["ip"]
+config_port = get_driver().config.dict()["guapi"]["port"]
 
 MdtCNDict: Optional[dict] = None
 wikidata: Optional[dict] = None
@@ -49,13 +50,13 @@ async def handle_function(args: Message = CommandArg(), event: Event = MessageEv
                                 MessageMarkdownParams(key="text_start", values=[f"{name}|搜索结果"]),
                                 MessageMarkdownParams(key="img_dec", values=[f"img #{image[2]}px #{image[3]}px"]),
                                 MessageMarkdownParams(key="img_url",
-                                                      values=[f"http://{config_ip}:8099/api/files/{image_id}"])
+                                                      values=[f"http://{config_ip}:{config_port}/api/files/{image_id}"])
                             ]
                         )
                         if group_id is not None:
                             await mdtmsg.finish(MessageSegment.markdown(mdmsg))
                         else:
-                            await mdtmsg.finish(MessageSegment.image(f"http://{config_ip}:8099/api/files/{image_id}"))
+                            await mdtmsg.finish(MessageSegment.image(f"http://{config_ip}:{config_port}/api/files/{image_id}"))
                     else:
                         await mdtmsg.finish("访问超时")
                 else:

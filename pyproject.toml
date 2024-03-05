@@ -7,9 +7,9 @@ requires-python = ">=3.8, <4.0"
 
 [tool.nonebot]
 adapters = [
-    { name = "QQ", module_name = "nonebot.adapters.qq" },
+    {name = "QQ", module_name = "nonebot.adapters.qq" },
     {name = "OneBot V11", module_name = "nonebot.adapters.onebot.v11"}
 ]
-plugins = ["nonebot_plugin_apscheduler", "nonebot_plugin_helloworld"]
 plugin_dirs = ["qqbot/plugins"]
 builtin_plugins = ["echo"]
+

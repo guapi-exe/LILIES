@@ -7,6 +7,7 @@ from nonebot.rule import to_me
 from nonebot.adapters.qq import MessageSegment, Event, Message, MessageEvent
 from nonebot.adapters.qq.models import MessageArk, MessageArkKv, MessageKeyboard, MessageMarkdown, MessageMarkdownParams
 config_ip = get_driver().config.dict()["guapi"]["ip"]
+config_port = get_driver().config.dict()["guapi"]["port"]
 
 help = on_command("help", rule=to_me(), aliases={"帮助"}, priority=10, block=True)
 afd = on_command("afd", rule=to_me(), aliases={"爱发电"}, priority=10, block=True)
@@ -18,9 +19,9 @@ async def handle_function(event: Event = MessageEvent()):
         custom_template_id="102071975_1702460123",
         params=[
             MessageMarkdownParams(key="text_start", values=[f"喂口饭吃"]),
-            MessageMarkdownParams(key="img_dec", values=[f"img #1280px #750px"]),
+            MessageMarkdownParams(key="img_dec", values=[f"img #750px #1028px"]),
             MessageMarkdownParams(key="img_url",
-                                  values=[f"http://{config_ip}:8099/static/img/afdian-guapi_exe.jpg"]),
+                                  values=[f"http://{config_ip}:{config_port}/static/img/afdian-guapi_exe.jpg"]),
         ]
     )
     await afd.finish(MessageSegment.markdown(mdmsg))
@@ -91,11 +92,7 @@ async def handle_function(event: Event = MessageEvent()):
                                 "unsupport_tips": "兼容文本",
                                 "data": "/设置群服务器"
                             }
-                        }
-                    ]
-                },
-                {
-                    "buttons": [
+                        },
                         {
                             "id": "2",
                             "render_data": {
@@ -115,6 +112,74 @@ async def handle_function(event: Event = MessageEvent()):
                                 "click_limit": 10,
                                 "unsupport_tips": "兼容文本",
                                 "data": "/机器人状态"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "buttons": [
+                        {
+                            "id": "17",
+                            "render_data": {
+                                "label": "⭕角色面板",
+                                "visited_label": "⭕角色面板"
+                            },
+                            "action": {
+                                "type": 2,
+                                "permission": {
+                                    "type": 2,
+                                    "specify_role_ids": [
+                                        "1",
+                                        "2",
+                                        "3"
+                                    ]
+                                },
+                                "click_limit": 10,
+                                "unsupport_tips": "兼容文本",
+                                "data": "/面板 "
+                            }
+                        },
+                        {
+                            "id": "18",
+                            "render_data": {
+                                "label": "⭕uuid绑定",
+                                "visited_label": "⭕uuid绑定"
+                            },
+                            "action": {
+                                "type": 2,
+                                "permission": {
+                                    "type": 2,
+                                    "specify_role_ids": [
+                                        "1",
+                                        "2",
+                                        "3"
+                                    ]
+                                },
+                                "click_limit": 10,
+                                "unsupport_tips": "兼容文本",
+                                "data": "/面板 绑定"
+                            }
+                        }
+                        ,
+                        {
+                            "id": "19",
+                            "render_data": {
+                                "label": "⭕队伍伤害估算",
+                                "visited_label": "⭕队伍伤害估算"
+                            },
+                            "action": {
+                                "type": 2,
+                                "permission": {
+                                    "type": 2,
+                                    "specify_role_ids": [
+                                        "1",
+                                        "2",
+                                        "3"
+                                    ]
+                                },
+                                "click_limit": 10,
+                                "unsupport_tips": "兼容文本",
+                                "data": "/队伍伤害"
                             }
                         }
                     ]

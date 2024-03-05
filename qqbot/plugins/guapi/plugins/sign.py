@@ -12,6 +12,7 @@ from nonebot.adapters.qq.models import MessageKeyboard, MessageMarkdown, Message
 from ..libs import User
 from ..utils.sqlite import get_user_data, update_user_data
 config_ip = get_driver().config.dict()["guapi"]["ip"]
+config_port = get_driver().config.dict()["guapi"]["port"]
 
 sign = on_command("签到", rule=to_me(), aliases={"sign"}, priority=10)
 imgfile_path = str(Path(__file__).parent.parent.joinpath("webs").joinpath("webfiles"))
@@ -58,7 +59,7 @@ async def handle_function(event: Event = MessageEvent()):
             params=[
                 MessageMarkdownParams(key="text_start", values=[f"签到(测试)获得:{round(rand_exp, 2)}经验|{rand_coins}硬币"]),
                 MessageMarkdownParams(key="img_dec", values=[f"img #{result[2]}px #{result[3]}px"]),
-                MessageMarkdownParams(key="img_url", values=[f"http://{config_ip}:8099/api/files/{image_id}"]),
+                MessageMarkdownParams(key="img_url", values=[f"http://{config_ip}:{config_port}/api/files/{image_id}"]),
                 MessageMarkdownParams(key="text_end", values=[f"{get_hitokoto()}"])
             ]
         )
@@ -96,7 +97,7 @@ async def handle_function(event: Event = MessageEvent()):
         if group_id is not None:
             await sign.send(Message([MessageSegment.markdown(mdmsg), MessageSegment.keyboard(kbmsg)]))
         else:
-            await sign.finish(MessageSegment.image(f"http://{config_ip}:8099/api/files/{image_id}"))
+            await sign.finish(MessageSegment.image(f"http://{config_ip}:{config_port}/api/files/{image_id}"))
     else:
         await sign.finish("图片下载错误")
 

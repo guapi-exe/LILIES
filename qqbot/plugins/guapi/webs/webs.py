@@ -8,7 +8,7 @@ from io import BytesIO
 from pathlib import Path
 from sqlite3 import Cursor
 from typing import Optional
-from nonebot import on_command, logger
+from nonebot import on_command, logger, get_driver
 from flask import Flask, request, send_file, jsonify, render_template, send_from_directory
 from wsgiref.simple_server import make_server
 import threading
@@ -18,8 +18,11 @@ from ..plugins.serverstate import get_server_state
 from ..utils.Mcapi import uuid_get, hyp_info_get, get_skin
 from ..utils.Mcserverstate import get_mcserver_state_original
 from ..utils.McskinHead import McskinHead
+from ..utils.bfapi import get_bfv_weapons_list, get_bf1_weapons_list, get_bf2042_info, get_bf1_vehicles_list, \
+    get_bfv_vehicles_list, get_bf1_classes_list, get_bfv_classes_list
 from ..utils.redisdata import get_redis_data
 
+config_port = get_driver().config.dict()["guapi"]["port"]
 cur: Optional[Cursor] = None
 app = Flask(__name__)
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}  # 允许上传的文件类型
@@ -80,6 +83,17 @@ async def get_server_info():
     device = await get_server_state()
     json_str = json.dumps(device, default=lambda obj: obj.__dict__)
     logger.info(f"api/dinfo来自{ip}的请求发送{json_str}")
+    response = jsonify(json_str)
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    return response
+
+
+@app.route("/api/dau", methods=["GET"])
+async def get_bot_dau():
+    ip = request.remote_addr
+    device = get_redis_data("chat_recorder")
+    json_str = json.loads(device)
+    logger.info(f"api/dau来自{ip}的请求发送{json_str}")
     response = jsonify(json_str)
     response.headers['Access-Control-Allow-Origin'] = '*'
     return response
@@ -176,8 +190,57 @@ def upload_file():
         return 'Invalid file', 400
 
 
+@app.route('/api/bf1weapons', methods=['GET'])
+async def get_bf1weapons():
+    name = request.args.get('name')
+    weapons = await get_bf1_weapons_list(name)
+    return jsonify(weapons)
+
+
+@app.route('/api/bfvweapons', methods=['GET'])
+async def get_bfvweapons():
+    name = request.args.get('name')
+    weapons = await get_bfv_weapons_list(name)
+    return jsonify(weapons)
+
+
+@app.route('/api/bf1vehicles', methods=['GET'])
+async def get_bf1vehicles():
+    name = request.args.get('name')
+    weapons = await get_bf1_vehicles_list(name)
+    return jsonify(weapons)
+
+
+@app.route('/api/bfvvehicles', methods=['GET'])
+async def get_bfvvehicles():
+    name = request.args.get('name')
+    weapons = await get_bfv_vehicles_list(name)
+    return jsonify(weapons)
+
+
+@app.route('/api/bf1classes', methods=['GET'])
+async def get_bf1classes():
+    name = request.args.get('name')
+    weapons = await get_bf1_classes_list(name)
+    return jsonify(weapons)
+
+
+@app.route('/api/bfvclasses', methods=['GET'])
+async def get_bfvclasses():
+    name = request.args.get('name')
+    weapons = await get_bfv_classes_list(name)
+    return jsonify(weapons)
+
+
+@app.route('/api/bf2042info', methods=['GET'])
+async def get_bf2042info():
+    name = request.args.get('name')
+    weapons = await get_bf2042_info(name)
+    return jsonify(weapons)
+
+
 def run_flask():
-    port = 8099
+    port = config_port
     app.run('0.0.0.0', port)
     logger.info(f"web服务器已经再0.0.0.0:{port}开放")
     flask_thread.join()

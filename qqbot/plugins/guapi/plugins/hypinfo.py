@@ -11,6 +11,7 @@ from nonebot.adapters.qq import MessageSegment, Event, Message, MessageEvent
 from ..utils.ppeteer import screenshot
 from ..utils.redisdata import redis_storage_cover, get_redis_data
 config_ip = get_driver().config.dict()["guapi"]["ip"]
+config_port = get_driver().config.dict()["guapi"]["port"]
 
 hyp = on_command("hyp", rule=to_me(), aliases={"hypixel"}, priority=10)
 hyp_api = on_command("update_hyp_apikey", rule=to_me(), aliases={"更新api"}, priority=10, block=True)
@@ -29,7 +30,7 @@ async def handle_function(args: Message = CommandArg(), event: Event = MessageEv
         if "guild_id" in dict_event:
             guild_id = dict_event["guild_id"]
         if api_key is not None:
-            image = await screenshot(1920, 1080, f"http://127.0.0.1:8099/hypinfo?name={name}",
+            image = await screenshot(1920, 1080, f"http://127.0.0.1:{config_port}/hypinfo?name={name}",
                                      imgfile_path, None, True, 4)
             address = image[1]
             parts = address.split("/")
@@ -39,7 +40,7 @@ async def handle_function(args: Message = CommandArg(), event: Event = MessageEv
                 params=[
                     MessageMarkdownParams(key="text_start", values=[f"{name}的hypixel信息"]),
                     MessageMarkdownParams(key="img_dec", values=[f"img #{image[2]}px #{image[3]}px"]),
-                    MessageMarkdownParams(key="img_url", values=[f"http://{config_ip}:8099/api/files/{image_id}"])
+                    MessageMarkdownParams(key="img_url", values=[f"http://{config_ip}:{config_port}/api/files/{image_id}"])
                 ]
             )
             if group_id is not None:

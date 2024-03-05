@@ -15,7 +15,7 @@ from ..utils.sqlite import update_server_list, get_server_list, update_mcserver_
 from nonebot.adapters.qq import MessageSegment, Event, Message, MessageEvent, permission
 
 config_ip = get_driver().config.dict()["guapi"]["ip"]
-
+config_port = get_driver().config.dict()["guapi"]["port"]
 
 add_mc_server_list = on_command("MC添加服务器", rule=to_me(), aliases={"MC添加"},
                                 priority=10, block=True)
@@ -86,7 +86,7 @@ async def handle_function(args: Message = CommandArg(), event: Event = MessageEv
     command = args.extract_plain_text().strip()
 
     if command == "all" or server_ip is None:
-        image = await screenshot(1220, 1080, f"http://127.0.0.1:8099/serverstate",
+        image = await screenshot(1220, 1080, f"http://127.0.0.1:{config_port}/serverstate",
                                  imgfile_path, None, True, 5)
         address = image[1]
         parts = address.split("/")
@@ -96,18 +96,18 @@ async def handle_function(args: Message = CommandArg(), event: Event = MessageEv
             params=[
                 MessageMarkdownParams(key="text_start", values=[f"服务器状态信息"]),
                 MessageMarkdownParams(key="img_dec", values=[f"img #{image[2]}px #{image[3]}px"]),
-                MessageMarkdownParams(key="img_url", values=[f"http://{config_ip}:8099/api/files/{image_id}"]),
+                MessageMarkdownParams(key="img_url", values=[f"http://{config_ip}:{config_port}/api/files/{image_id}"]),
                 MessageMarkdownParams(key="text_end", values=[f"需要添加看help加群"]),
             ]
         )
         if group_id is not None:
             await look_server_state.finish(MessageSegment.markdown(mdmsg))
         else:
-            await look_server_state.finish(MessageSegment.image(f"http://{config_ip}:8099/api/files/{image_id}"))
+            await look_server_state.finish(MessageSegment.image(f"http://{config_ip}:{config_port}/api/files/{image_id}"))
     else:
         if command != "":
             server_ip = command
-        image = await screenshot(1260, 1080, f"http://127.0.0.1:8099/Mcserver?ip={server_ip}",
+        image = await screenshot(1260, 1080, f"http://127.0.0.1:{config_port}/Mcserver?ip={server_ip}",
                                  imgfile_path, None, True, 5)
         address = image[1]
         parts = address.split("/")
@@ -117,7 +117,7 @@ async def handle_function(args: Message = CommandArg(), event: Event = MessageEv
             params=[
                 MessageMarkdownParams(key="text_start", values=[f"服务器状态信息"]),
                 MessageMarkdownParams(key="img_dec", values=[f"img #{image[2]}px #{image[3]}px"]),
-                MessageMarkdownParams(key="img_url", values=[f"http://{config_ip}:8099/api/files/{image_id}"]),
+                MessageMarkdownParams(key="img_url", values=[f"http://{config_ip}:{config_port}/api/files/{image_id}"]),
             ]
         )
         kbmsg = MessageKeyboard(
@@ -153,7 +153,7 @@ async def handle_function(args: Message = CommandArg(), event: Event = MessageEv
         if group_id is not None:
             await look_server_state.finish(Message([MessageSegment.markdown(mdmsg), MessageSegment.keyboard(kbmsg)]))
         else:
-            await look_server_state.finish(MessageSegment.image(f"http://{config_ip}:8099/api/files/{image_id}"))
+            await look_server_state.finish(MessageSegment.image(f"http://{config_ip}:{config_port}/api/files/{image_id}"))
 
 
 async def get_mcserver_state(ip: str):
