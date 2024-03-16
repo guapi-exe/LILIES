@@ -140,7 +140,7 @@ class dell_create_image:
 
 # 简单示范
 """async def image_test():
-    cookie = "1YEoSxs-XwBE6CxDggwC-2dSfbULaJrivL79W-HJXhVNwIb-RqHfeRJ1n7MhUKGmK4ANOwWeFVEYmBcRRXEv43LP7SDwmEW6jkBc2TVyuE9roTeDxtIKF03A2dpUGhTUnwOB4wkhVQopPNdFk5Tkg0NhtOnEnZp35XS2bLf7whI-Rkcfg0gQXX1NtlbVTEEUpnoBs0zaHHW6M8BcNO-zOhA"
+    cookie = ""
     agent_http = "http://127.0.0.1:10809"
     image = dell_create_image(cookie, agent_http, "猫娘")
     images = await image.return_images()
