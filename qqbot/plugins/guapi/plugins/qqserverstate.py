@@ -18,7 +18,7 @@ imgfile_path = str(Path(__file__).parent.parent.joinpath("webs").joinpath("webfi
 @serverstate.handle()
 async def handle_function(event: Event = MessageEvent()):
     image = await screenshot(780, 1080, f"http://127.0.0.1:{config_port}/botstate",
-                             imgfile_path, None, True, 5)
+                             imgfile_path, None, True, 0)
     address = image[1]
     parts = address.split("/")
     image_id = parts[-1]

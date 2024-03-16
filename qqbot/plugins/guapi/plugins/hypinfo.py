@@ -31,7 +31,7 @@ async def handle_function(args: Message = CommandArg(), event: Event = MessageEv
             guild_id = dict_event["guild_id"]
         if api_key is not None:
             image = await screenshot(1920, 1080, f"http://127.0.0.1:{config_port}/hypinfo?name={name}",
-                                     imgfile_path, None, True, 4)
+                                     imgfile_path, None, True, 0)
             address = image[1]
             parts = address.split("/")
             image_id = parts[-1]

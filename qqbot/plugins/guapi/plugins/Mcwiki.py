@@ -28,7 +28,7 @@ async def handle_function(args: Message = CommandArg(), event: Event = MessageEv
             await mc_wiki.finish("无搜索结果")
         else:
             image = await screenshot(1920, 1080, f"{url}",
-                                     imgfile_path, None, True, 1)
+                                     imgfile_path, None, True, 0)
             address = image[1]
             parts = address.split("/")
             image_id = parts[-1]

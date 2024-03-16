@@ -58,7 +58,7 @@ async def handle_function(args: Message = CommandArg(), event: Event = MessageEv
         if bf_id is None:
             bfv_info.finish("请在指令后键入玩家名或者使用/bf绑定 [账号]")
         image = await screenshot(780, 1080, f"http://127.0.0.1:{config_port}/{command}?name={bf_id}&type=bfv",
-                                 imgfile_path, None, True, 5)
+                                 imgfile_path, None, True, 0)
         address = image[1]
         parts = address.split("/")
         image_id = parts[-1]
@@ -79,7 +79,7 @@ async def handle_function(args: Message = CommandArg(), event: Event = MessageEv
         bf_id = command
     if bf_id is not None:
         image = await screenshot(780, 1080, f"http://127.0.0.1:{config_port}/bfv?name={bf_id}",
-                                 imgfile_path, None, True, 5)
+                                 imgfile_path, None, True, 0)
         address = image[1]
         parts = address.split("/")
         image_id = parts[-1]
@@ -171,7 +171,7 @@ async def handle_function(args: Message = CommandArg(), event: Event = MessageEv
             await bfv_info.finish(
                 MessageSegment.image(f"http://{config_ip}:{config_port}/api/files/{image_id}"))
     else:
-        bfv_info.finish("请在指令后键入玩家名或者使用/bf绑定 [账号]")
+        await bfv_info.finish("请在指令后键入玩家名或者使用/bf绑定 [账号]")
 
 
 @bf1_info.handle()
@@ -190,7 +190,7 @@ async def handle_function(args: Message = CommandArg(), event: Event = MessageEv
         if bf_id is None:
             bfv_info.finish("请在指令后键入玩家名或者使用/bf绑定 [账号]")
         image = await screenshot(780, 1080, f"http://127.0.0.1:{config_port}/{command}?name={bf_id}&type=bf1",
-                                 imgfile_path, None, True, 5)
+                                 imgfile_path, None, True, 0)
         address = image[1]
         parts = address.split("/")
         image_id = parts[-1]
@@ -211,7 +211,7 @@ async def handle_function(args: Message = CommandArg(), event: Event = MessageEv
         bf_id = command
     if bf_id is not None:
         image = await screenshot(780, 1080, f"http://127.0.0.1:{config_port}/bf1?name={bf_id}",
-                                 imgfile_path, None, True, 5)
+                                 imgfile_path, None, True, 0)
         address = image[1]
         parts = address.split("/")
         image_id = parts[-1]
@@ -303,7 +303,7 @@ async def handle_function(args: Message = CommandArg(), event: Event = MessageEv
             await bfv_info.finish(
                 MessageSegment.image(f"http://{config_ip}:{config_port}/api/files/{image_id}"))
     else:
-        bfv_info.finish("请在指令后键入玩家名或者使用/bf绑定 [账号]")
+        await bfv_info.finish("请在指令后键入玩家名或者使用/bf绑定 [账号]")
 
 
 @bf2042_info.handle()
@@ -322,7 +322,7 @@ async def handle_function(args: Message = CommandArg(), event: Event = MessageEv
         if bf_id is None:
             bfv_info.finish("请在指令后键入玩家名或者使用/bf绑定 [账号]")
         image = await screenshot(780, 1080, f"http://127.0.0.1:{config_port}/{command}?name={bf_id}&type=bf2042",
-                                 imgfile_path, None, True, 5)
+                                 imgfile_path, None, True, 0)
         address = image[1]
         parts = address.split("/")
         image_id = parts[-1]
@@ -343,7 +343,7 @@ async def handle_function(args: Message = CommandArg(), event: Event = MessageEv
         bf_id = command
     if bf_id is not None:
         image = await screenshot(780, 1080, f"http://127.0.0.1:{config_port}/bf2042?name={bf_id}",
-                                 imgfile_path, None, True, 5)
+                                 imgfile_path, None, True, 0)
         address = image[1]
         parts = address.split("/")
         image_id = parts[-1]
@@ -435,4 +435,4 @@ async def handle_function(args: Message = CommandArg(), event: Event = MessageEv
             await bfv_info.finish(
                 MessageSegment.image(f"http://{config_ip}:{config_port}/api/files/{image_id}"))
     else:
-        bfv_info.finish("请在指令后键入玩家名或者使用/bf绑定 [账号]")
+        await bfv_info.finish("请在指令后键入玩家名或者使用/bf绑定 [账号]")

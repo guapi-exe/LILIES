@@ -32,7 +32,7 @@ async def handle_function(args: Message = CommandArg(), event: Event = MessageEv
                 if dictdata[1].title() in wikidata[dictdata[0]]:
                     urldata = wikidata[dictdata[0]][dictdata[1].title()]
                     image = await screenshot(1920, 1080, f"{urldata}",
-                                             imgfile_path, None, True, 5)
+                                             imgfile_path, None, True, 0)
                     address = image[1]
                     parts = address.split("/")
                     image_id = parts[-1]

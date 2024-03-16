@@ -87,7 +87,7 @@ async def handle_function(args: Message = CommandArg(), event: Event = MessageEv
 
     if command == "all" or server_ip is None:
         image = await screenshot(1220, 1080, f"http://127.0.0.1:{config_port}/serverstate",
-                                 imgfile_path, None, True, 5)
+                                 imgfile_path, None, True, 0)
         address = image[1]
         parts = address.split("/")
         image_id = parts[-1]
@@ -108,7 +108,7 @@ async def handle_function(args: Message = CommandArg(), event: Event = MessageEv
         if command != "":
             server_ip = command
         image = await screenshot(1260, 1080, f"http://127.0.0.1:{config_port}/Mcserver?ip={server_ip}",
-                                 imgfile_path, None, True, 5)
+                                 imgfile_path, None, True, 0)
         address = image[1]
         parts = address.split("/")
         image_id = parts[-1]

@@ -5,7 +5,7 @@ import requests
 
 async def get_bfv_weapons_list(name: str):
     url = f"https://api.gametools.network/bfv/weapons/?format_values=false&name={name}&lang=zh-cn"
-    request = requests.get(url)
+    request = requests.get(url, verify=False)
     content = request.json()
 
     if "weapons" in content:
@@ -18,7 +18,7 @@ async def get_bfv_weapons_list(name: str):
 
 async def get_bfv_vehicles_list(name: str):
     url = f"https://api.gametools.network/bfv/vehicles/?format_values=false&name={name}&lang=zh-cn"
-    request = requests.get(url)
+    request = requests.get(url, verify=False)
     content = request.json()
 
     if "vehicles" in content:
@@ -31,7 +31,7 @@ async def get_bfv_vehicles_list(name: str):
 
 async def get_bfv_classes_list(name: str):
     url = f"https://api.gametools.network/bfv/classes/?format_values=false&name={name}&lang=zh-cn"
-    request = requests.get(url)
+    request = requests.get(url, verify=False)
     content = request.json()
     if "classes" in content:
         classes: list = content["classes"]
@@ -59,7 +59,7 @@ async def get_bfv_classes_list(name: str):
 
 async def get_bf2042_info(name: str):
     url = f"https://api.gametools.network/bf2042/stats/?raw=false&format_values=true&name={name}&lang=zh-cn"
-    request = requests.get(url)
+    request = requests.get(url, verify=False)
     content = request.json()
     logger.info(content)
     vehicles: Optional[list]
@@ -79,7 +79,7 @@ async def get_bf2042_info(name: str):
 
 async def get_bf1_weapons_list(name: str):
     url = f"https://api.gametools.network/bf1/weapons/?format_values=false&name={name}&lang=zh-cn"
-    request = requests.get(url)
+    request = requests.get(url, verify=False)
     content = request.json()
 
     if "weapons" in content:
@@ -92,7 +92,7 @@ async def get_bf1_weapons_list(name: str):
 
 async def get_bf1_vehicles_list(name: str):
     url = f"https://api.gametools.network/bf1/vehicles/?format_values=false&name={name}&lang=zh-cn"
-    request = requests.get(url)
+    request = requests.get(url, verify=False)
     content = request.json()
 
     if "vehicles" in content:
@@ -105,7 +105,7 @@ async def get_bf1_vehicles_list(name: str):
 
 async def get_bf1_classes_list(name: str):
     url = f"https://api.gametools.network/bf1/classes/?format_values=false&name={name}&lang=zh-cn"
-    request = requests.get(url)
+    request = requests.get(url, verify=False)
     content = request.json()
 
     if "classes" in content:

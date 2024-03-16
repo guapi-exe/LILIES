@@ -52,7 +52,7 @@ async def handle_function(args: Message = CommandArg(), event: Event = MessageEv
         if command != "":
             server_ip = command
         image = await screenshot(1260, 1080, f"https://www.mindustry.top/server",
-                                 imgfile_path, None, True, 5)
+                                 imgfile_path, None, True, 0)
         address = image[1]
         parts = address.split("/")
         image_id = parts[-1]

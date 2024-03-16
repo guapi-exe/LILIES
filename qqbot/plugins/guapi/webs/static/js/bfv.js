@@ -424,7 +424,10 @@ let web_url = window.location.href;
 const url = new URL(web_url);
 const params = new URLSearchParams(url.search);
 const name = params.get('name');
-reload_header(name)
-reload_weapons(name)
-reload_vehicles(name)
-reload_classes(name)
+Promise.all([
+    reload_header(name),
+    reload_weapons(name),
+    reload_vehicles(name),
+    reload_classes(name)
+]).then(()=>{
+})
